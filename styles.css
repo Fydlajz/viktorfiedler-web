@@ -205,3 +205,97 @@ button { font: inherit; }
   .ambient-light { opacity:.6; }
   .tiles::before { inset:-12px -15px -20px; }
 }
+
+/* VERZE 7 – FINÁLNÍ FILMOVÉ POZADÍ */
+
+body {
+  position: relative;
+  isolation: isolate;
+  background: #06111c;
+  background-image: none;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1100px;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 58%,
+      rgba(5,12,22,.22) 76%,
+      #06111c 100%
+    ),
+    url("assets/pozadi-atelier.webp")
+      center top / cover no-repeat;
+}
+
+body > header,
+body > main,
+body > footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Odstranění předchozích světelných efektů */
+
+.hero::before,
+.hero::after,
+.hero-visual::before,
+.ambient-light,
+.tiles::before {
+  display: none !important;
+}
+
+.hero-visual {
+  isolation: auto;
+}
+
+/* Širší desktopové rozvržení */
+
+@media (min-width: 1151px) {
+  .wrap {
+    width: min(1540px, calc(100% - 72px));
+  }
+
+  .hero-visual {
+    height: 525px;
+  }
+}
+
+/* Pozadí pro tablet */
+
+@media (max-width: 850px) {
+  body::before {
+    height: 1220px;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(4,13,24,.20),
+        rgba(4,12,23,.05) 50%,
+        #06111c 100%
+      ),
+      url("assets/pozadi-atelier.webp")
+        68% top / auto 1220px no-repeat;
+  }
+}
+
+/* Pozadí pro mobil */
+
+@media (max-width: 520px) {
+  body::before {
+    height: 1260px;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(4,13,24,.60),
+        rgba(4,12,23,.23) 38%,
+        #06111c 100%
+      ),
+      url("assets/pozadi-atelier.webp")
+        72% top / auto 1260px no-repeat;
+  }
+}
