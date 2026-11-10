@@ -1,4 +1,4 @@
-/* Viktor Fiedler – portfolio / grafická verze 5: filmové pozadí. */
+/* Viktor Fiedler – grafická verze 6: jemné filmové světlo, bez tvrdých hran. */
 :root {
   color-scheme: dark;
   --bg: #06111c;
@@ -18,17 +18,10 @@ body {
      Pozadí je vytvořeno pouze pomocí CSS – neobsahuje fotografii ani text. */
   background-color: #06111c;
   background-image:
-    radial-gradient(circle 16px at 88% 146px, rgba(255,183,88,.13) 0%, transparent 95%),
-    radial-gradient(circle 10px at 95% 269px, rgba(255,172,78,.12) 0%, transparent 95%),
-    radial-gradient(circle 23px at 92% 361px, rgba(236,147,57,.13) 0%, transparent 96%),
-    radial-gradient(circle 9px at 79% 122px, rgba(255,213,154,.10) 0%, transparent 99%),
-    radial-gradient(circle 14px at 99% 423px, rgba(255,166,67,.11) 0%, transparent 99%),
-    radial-gradient(circle 8px at 57% 196px, rgba(255,204,127,.07) 0%, transparent 100%),
-    radial-gradient(ellipse 470px 380px at 80% 318px, rgba(221,126,51,.26) 0%, rgba(172,86,36,.10) 42%, transparent 77%),
-    radial-gradient(ellipse 340px 260px at 92% 260px, rgba(246,168,83,.13) 0%, transparent 77%),
-    radial-gradient(ellipse 620px 340px at 72% 73px, rgba(26,61,103,.48) 0%, transparent 78%),
-    radial-gradient(ellipse 790px 480px at 13% 120px, rgba(9,49,80,.43) 0%, transparent 80%),
-    linear-gradient(to bottom, #071828 0px, #071322 520px, #05101c 945px, #06111c 1600px);
+    radial-gradient(ellipse 630px 510px at 81% 345px, rgba(211,112,44,.18) 0%, rgba(155,76,39,.08) 48%, transparent 88%),
+    radial-gradient(ellipse 780px 440px at 77% 120px, rgba(31,65,109,.36) 0%, transparent 88%),
+    radial-gradient(ellipse 900px 500px at 12% 110px, rgba(11,55,90,.48) 0%, transparent 86%),
+    linear-gradient(180deg, #051421 0px, #06101d 760px, #050e1a 1150px, #071321 1800px);
   background-repeat: no-repeat;
   color: var(--text);
   font: 16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
@@ -140,46 +133,75 @@ button { font: inherit; }
 }
 
 
-/* === VERZE 5 / FINÁLNÍ ATMOSFÉRA ÚVODU ===
-   Měněno jen CSS. Původní VIRTOK a portrét se načítají beze změny. */
-.hero-visual::before {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  z-index: -1;
-  inset: -60px -170px -18px -150px;
+
+/* VERZE 6: Světlo je výhradně dekorativní CSS; tvá fotografie zůstává originální PNG. */
+.hero { isolation:isolate; }
+.hero-copy, .hero-visual { position:relative; z-index:2; }
+
+/* Rozptýlené kužely světla – měkké maskování místo tvrdého clip-path. */
+.hero::before {
+  content:"";
+  position:absolute;
+  pointer-events:none;
+  z-index:0;
+  top:-118px; right:-9vw; bottom:-50px; left:35%;
   background:
-    linear-gradient(130deg, transparent 24%, rgba(255,192,101,.045) 42%, rgba(255,171,74,.13) 56%, transparent 75%),
-    radial-gradient(ellipse at 63% 58%, rgba(245,143,54,.22) 0%, rgba(211,108,48,.07) 40%, transparent 73%);
-  clip-path: polygon(69% 0%, 100% 0%, 100% 100%, 5% 100%);
-  filter: blur(24px);
+    radial-gradient(ellipse 38% 55% at 69% 49%, rgba(255,168,73,.30) 0%, rgba(231,122,47,.22) 43%, transparent 91%),
+    conic-gradient(from 195deg at 91% -6%, transparent 0 15deg, rgba(255,206,140,.06) 28deg, rgba(255,183,104,.12) 43deg, rgba(245,162,74,.08) 59deg, transparent 77deg 360deg),
+    radial-gradient(ellipse 57% 50% at 51% 55%, rgba(21,70,116,.28),transparent 89%);
+  -webkit-mask-image:radial-gradient(ellipse 92% 91% at 65% 49%, #000 15%,rgba(0,0,0,.8) 45%,transparent 99%);
+  mask-image:radial-gradient(ellipse 92% 91% at 65% 49%, #000 15%,rgba(0,0,0,.8) 45%,transparent 99%);
+  filter:blur(34px);
 }
+/* Světelné body v pozadí, nikoli nad fotografií. */
+.hero::after {
+  content:"";
+  position:absolute;
+  pointer-events:none;
+  z-index:0;
+  inset:-62px -7vw 0 32%;
+  background:
+    radial-gradient(circle 21px at 84% 18%, rgba(255,202,135,.38),rgba(250,155,65,.14) 55%,transparent 100%),
+    radial-gradient(circle 13px at 94% 29%, rgba(255,172,84,.32),transparent 100%),
+    radial-gradient(circle 33px at 93% 53%,rgba(255,157,67,.17),transparent 100%),
+    radial-gradient(circle 9px at 74% 11%,rgba(255,208,149,.29),transparent 100%),
+    radial-gradient(circle 17px at 99% 42%,rgba(255,165,77,.21),transparent 100%),
+    radial-gradient(circle 11px at 80% 68%,rgba(243,172,101,.14),transparent 100%),
+    radial-gradient(circle 7px at 61% 20%,rgba(255,196,125,.17),transparent 100%),
+    radial-gradient(circle 24px at 75% 76%,rgba(226,135,57,.11),transparent 100%),
+    radial-gradient(circle 16px at 48% 10%,rgba(142,168,193,.09),transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 68% 85% at 80% 47%,#000 10%,transparent 99%);
+  mask-image:radial-gradient(ellipse 68% 85% at 80% 47%,#000 10%,transparent 99%);
+  filter:blur(2.5px);
+}
+/* Žádný polygon, žádný obdélník za postavou. */
+.hero-visual::before { content:none !important; }
 .ambient-light {
-  inset: -6% -17% -4% -17%;
+  inset:-10% -25% -5% -25%;
+  z-index:-1;
   background:
-    radial-gradient(ellipse at 62% 42%, rgba(250,165,64,.31), transparent 56%),
-    radial-gradient(ellipse at 25% 68%, rgba(36,115,169,.24), transparent 63%);
-  filter: blur(14px);
+    radial-gradient(ellipse 59% 64% at 70% 52%,rgba(239,143,61,.23),rgba(198,104,48,.10) 52%,transparent 94%),
+    radial-gradient(ellipse 52% 55% at 20% 75%,rgba(27,88,145,.24),transparent 96%);
+  -webkit-mask-image:radial-gradient(ellipse at 55% 53%,#000 15%,transparent 86%);
+  mask-image:radial-gradient(ellipse at 55% 53%,#000 15%,transparent 86%);
+  filter:blur(22px);
 }
-/* Filmové zvýraznění celé skupiny karet bez tmavých obdélníků jednotlivých PNG. */
-.tiles { isolation: isolate; }
+/* Lehké ztmavení za kartami, bez viditelného panelu. */
+.tiles { isolation:isolate; }
 .tiles::before {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  z-index: -1;
-  inset: -35px -30px -55px;
-  border-radius: 60px;
-  background: linear-gradient(to bottom, rgba(3,10,19,0) 0%, rgba(3,9,17,.18) 30%, rgba(2,8,17,.33) 100%);
-  filter: blur(26px);
+  content:"";pointer-events:none;position:absolute;z-index:-1;
+  inset:-40px -5vw -50px;
+  background:radial-gradient(ellipse 80% 71% at 50% 55%,rgba(1,7,15,.38),transparent 95%);
+  filter:blur(18px);
 }
-@media (max-width: 850px) {
-  .hero-visual::before { inset: -28px -18% -12px -18%; filter: blur(20px); }
-  .ambient-light { inset: 0 -8%; }
-  .tiles::before { inset: -20px -12px -30px; }
+@media (max-width:850px) {
+  .hero::before { top:-20px;bottom:0;left:0;right:-5vw;opacity:.72;filter:blur(27px); }
+  .hero::after { inset:0 -4vw 0 15%;opacity:.6; }
+  .ambient-light { inset:-3% -10%; }
 }
-@media (max-width: 520px) {
-  .hero-visual::before { opacity: .68; }
-  .ambient-light { opacity: .72; }
-  .tiles::before { filter: blur(18px); }
+@media (max-width:520px) {
+  .hero::before { opacity:.53;filter:blur(24px); }
+  .hero::after { opacity:.4; }
+  .ambient-light { opacity:.6; }
+  .tiles::before { inset:-12px -15px -20px; }
 }
