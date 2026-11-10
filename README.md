@@ -14,6 +14,6 @@ Statický responzivní web pro doménu `viktorfiedler.cz`.
 - `styles.css` – design a mobilní zobrazení
 - `script.js` – mobilní navigace a aktuální rok
 - `assets/virtok.png` – autorský podpis používaný jen jako logo
-- `assets/viktor-original.png` – schválená fotografie uživatele, bez výměny obličeje
+- `assets/viktor-transparent.png` – schválená fotografie s průhledným pozadím
 
-**Poznámka:** Fotografie v dodaném souboru stále obsahuje vlastní grafické pozadí. Je zachována beze změny; případné skutečné odstranění pozadí je samostatný grafický krok.
+**Rozvržení:** text vlevo, fotografie vpravo. VIRTOK se objevuje pouze jako grafické logo v záhlaví.
