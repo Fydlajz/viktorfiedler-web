@@ -1,4 +1,4 @@
-/* Viktor Fiedler – portfolio / grafická verze 3 */
+/* Viktor Fiedler – portfolio / grafická verze 4: jemné doladění */
 :root {
   color-scheme: dark;
   --bg: #06111c;
@@ -31,9 +31,9 @@ button { font: inherit; }
 .skip-link:focus { top:12px; }
 
 /* Hlavička: schválené logo je skutečný, nezměněný PNG soubor. */
-.site-header { min-height:112px; display:flex; align-items:center; justify-content:space-between; gap:24px; position:relative; z-index:5; }
+.site-header { min-height:120px; display:flex; align-items:center; justify-content:space-between; gap:24px; position:relative; z-index:5; }
 .identity { display:flex;align-items:center;gap:20px;min-width:0; }
-.signature { width:150px;height:94px;object-fit:contain;flex-shrink:0; }
+.signature { width:168px;height:105px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 7px rgba(255,255,255,.12)); }
 .identity-text { display:grid;gap:2px;padding-left:22px;border-left:1px solid rgba(238,244,251,.46); }
 .identity-text strong { font-size:clamp(20px,2vw,29px);font-weight:600;line-height:1.25;white-space:nowrap; }
 .identity-text small { color:#c3ced8;font-size:9px;letter-spacing:1.25px;white-space:nowrap; }
@@ -57,12 +57,12 @@ button { font: inherit; }
 .play { width:37px;height:37px;display:grid;place-items:center;border-radius:50%;background:var(--gold);color:#0c1722;font-size:14px;padding-left:3px; }
 .hero-visual { min-width:0;height:510px;align-self:end;position:relative;isolation:isolate;display:flex;justify-content:center;align-items:end; }
 .ambient-light { position:absolute;inset:6% -12% 0 -15%;z-index:-1;background:radial-gradient(ellipse at 67% 45%,rgba(226,126,38,.26),transparent 46%),radial-gradient(ellipse at 27% 64%,rgba(36,115,169,.30),transparent 52%);filter:blur(5px); }
-.portrait { display:block;width:min(100%,500px);height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 9px 35px rgba(0,0,0,.28)); }
+.portrait { display:block;width:min(100%,500px);height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 9px 35px rgba(0,0,0,.28));transform:scale(1.12);transform-origin:50% 100%; }
 
 /* Ilustrované dlaždice: schválené čtyři původní návrhy, jako klikací obrázky. */
-.tiles { position:relative;z-index:3;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:4px;row-gap:16px;margin-top:-47px;margin-bottom:38px; }
+.tiles { position:relative;z-index:3;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:10px;row-gap:16px;margin-top:-47px;margin-bottom:38px; }
 .tile { display:block;min-width:0;position:relative;isolation:isolate;border-radius:22px;transition:transform .23s ease, filter .23s ease; }
-.tile img { display:block;width:100%;height:auto;aspect-ratio:1122 / 1402;object-fit:contain; }
+.tile img { display:block;width:100%;height:auto;object-fit:contain; }
 .tile:hover { transform:translateY(-8px);filter:brightness(1.12); }
 .tile:focus-visible { outline-offset:-12px; }
 
@@ -79,7 +79,7 @@ button { font: inherit; }
 @media (max-width:1150px) {
   .wrap { width:min(100% - 40px,1320px); }
   .identity { gap:12px; }
-  .signature { width:115px;height:80px; }
+  .signature { width:128px;height:86px; }
   .identity-text { padding-left:15px; }
   .identity-text strong { font-size:21px; }
   .identity-text small { font-size:8px;letter-spacing:.45px; }
@@ -89,6 +89,7 @@ button { font: inherit; }
   .hero h1 { font-size:clamp(41px,4.5vw,58px); }
 }
 @media (max-width:850px) {
+  .portrait { transform:scale(1.045); }
   .site-header { min-height:96px;flex-wrap:wrap;gap:0; }
   .menu-toggle { display:block;margin-left:auto;font-size:23px; }
   .nav { display:none;flex-basis:100%;flex-wrap:wrap;gap:4px 18px;padding:12px 0 20px; }
@@ -104,7 +105,7 @@ button { font: inherit; }
   .wrap { width:calc(100% - 26px); }
   .site-header { min-height:82px; }
   .identity { gap:7px; }
-  .signature { width:68px;height:62px; }
+  .signature { width:76px;height:68px; }
   .identity-text { padding-left:11px; }
   .identity-text strong { font-size:17px; }
   .identity-text small { font-size:6px;letter-spacing:.1px; }
@@ -114,6 +115,7 @@ button { font: inherit; }
   .hero-description { font-size:15px; }
   .hero-button { font-size:13px; }
   .hero-visual { height:375px; }
+  .portrait { transform:none; }
   .tiles { grid-template-columns:1fr;gap:0;margin-top:6px;max-width:410px;margin-inline:auto; }
   .tile { margin-block:-8px; }
   .content { padding:51px 4px 58px; }
